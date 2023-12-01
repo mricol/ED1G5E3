@@ -42,8 +42,13 @@ Ahora, para realizar un sumador de 4 bits, se necesitan cuatro sumadores de un b
 
 ### Restador
 
-Para restar un número en lugar de sumarlo, primero hay que obtener su complemento a dos. Esto se logra invirtiendo todos los bits del número y sumándole 1 al resultado. En la operación de resta de un número de 4 bits, se utiliza compuertas XOR para invertir los bits cuando sea necesario. Después de esta inversión, se agrega 1 al número, completando así la transformación al complemento a dos.
+Para restar un número en lugar de sumarlo, primero hay que obtener su complemento a dos. Esto se logra invirtiendo todos los bits del número y sumándole 1 al resultado. Para el circuito restador de un número de 4 bits, se utilizan compuertas XOR para invertir los bits cuando sea necesario. Después de esta inversión, se agrega 1 al número, completando así la transformación al complemento a dos.
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/20060c8b-ab78-4f30-88a1-46c606aea8fc)
 
-###
+### Sumador-Restador
+
+Por último, para realizar el sumador-restador se utilizan 
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/832fc686-ef26-4284-985a-7fe21a67e29b)
+

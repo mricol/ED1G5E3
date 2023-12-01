@@ -46,11 +46,255 @@ Para restar un número en lugar de sumarlo, primero hay que obtener su complemen
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/20060c8b-ab78-4f30-88a1-46c606aea8fc)
 
-### Sumador-Restador
+### Sumador-Restador de 4 bits
 
 En la finalización del diseño del sumador-restador de 4 bits, se utiliza primero un circuitos complemento a2 para cada entrada, después de esto se le agrega un sumador de 4 bits y luego de esto, se coloca otro módulo de complemento a2 a la salida del sumador para facilitar la interpretación del resultado.
 
 Para determinar el signo del resultado, se suman los bits de signo de los números de entrada. Sin embargo, cuando ambos números son negativos, se emplea una compuerta lógica AND y un multiplexor para decidir si se utiliza la señal del semisumador de signo o la salida de la compuerta AND de signo para establecer el signo resultante. Esto se hace para gestionar correctamente los casos especiales donde ambos números son negativos.
 
+Y de esta manera se puede leer en la salida el signo corespontiente de la operación y el número binario.
+
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/832fc686-ef26-4284-985a-7fe21a67e29b)
 
+## TestBench Sumador-Restador de 4 bits
+
+module SemiS (
+  input a,
+  input b,
+  output Sum,
+  output Cout
+);
+  assign Sum = (a ^ b);
+  assign Cout = (a & b);
+endmodule
+
+module CompA2 (
+  input Sign,
+  input A0,
+  input A1,
+  input A2,
+  input A3,
+  output B0,
+  output B1,
+  output B2,
+  output B3
+);
+  wire s0;
+  wire s1;
+  wire s2;
+  wire s3;
+  wire s4;
+  wire s5;
+  assign s0 = (A0 ^ Sign);
+  assign s2 = (A1 ^ Sign);
+  assign s4 = (A2 ^ Sign);
+  SemiS SemiS_i0 (
+    .a( Sign ),
+    .b( s0 ),
+    .Sum( B0 ),
+    .Cout( s1 )
+  );
+  SemiS SemiS_i1 (
+    .a( s1 ),
+    .b( s2 ),
+    .Sum( B1 ),
+    .Cout( s3 )
+  );
+  SemiS SemiS_i2 (
+    .a( s3 ),
+    .b( s4 ),
+    .Sum( B2 ),
+    .Cout( s5 )
+  );
+  assign B3 = (s5 ^ (A3 ^ Sign));
+endmodule
+
+module Sumador (
+  input a,
+  input b,
+  input c,
+  output Sum,
+  output Cout
+);
+  wire s0;
+  wire s1;
+  wire s2;
+  SemiS SemiS_i0 (
+    .a( a ),
+    .b( b ),
+    .Sum( s2 ),
+    .Cout( s1 )
+  );
+  SemiS SemiS_i1 (
+    .a( s2 ),
+    .b( c ),
+    .Sum( Sum ),
+    .Cout( s0 )
+  );
+  assign Cout = (s0 | s1);
+endmodule
+
+module Sumador4b (
+  input a0,
+  input a1,
+  input b0,
+  input b1,
+  input cin,
+  input a2,
+  input b2,
+  input a3,
+  input b3,
+  output s0,
+  output s1,
+  output s2,
+  output s3,
+  output cout
+);
+  wire s4;
+  wire s5;
+  wire s6;
+  Sumador Sumador_i0 (
+    .a( a0 ),
+    .b( b0 ),
+    .c( cin ),
+    .Sum( s0 ),
+    .Cout( s4 )
+  );
+  Sumador Sumador_i1 (
+    .a( a1 ),
+    .b( b1 ),
+    .c( s4 ),
+    .Sum( s1 ),
+    .Cout( s5 )
+  );
+  Sumador Sumador_i2 (
+    .a( a2 ),
+    .b( b2 ),
+    .c( s5 ),
+    .Sum( s2 ),
+    .Cout( s6 )
+  );
+  Sumador Sumador_i3 (
+    .a( a3 ),
+    .b( b3 ),
+    .c( s6 ),
+    .Sum( s3 ),
+    .Cout( cout )
+  );
+endmodule
+
+module Mux_2x1
+(
+    input [0:0] sel,
+    input in_0,
+    input in_1,
+    output reg out
+);
+    always @ (*) begin
+        case (sel)
+            1'h0: out = in_0;
+            1'h1: out = in_1;
+            default:
+                out = 'h0;
+        endcase
+    end
+endmodule
+
+
+module SumRes (
+  input A0,
+  input A1,
+  input A2,
+  input A3,
+  input SA,
+  input B0,
+  input B1,
+  input B2,
+  input B3,
+  input SB,
+  output C0,
+  output C1,
+  output C2,
+  output C3,
+  output SC
+);
+  wire s0;
+  wire s1;
+  wire s2;
+  wire s3;
+  wire s4;
+  wire s5;
+  wire s6;
+  wire s7;
+  wire s8;
+  wire s9;
+  wire s10;
+  wire s11;
+  wire s12;
+  wire SC_temp;
+  wire s13;
+  wire s14;
+  CompA2 CompA2_i0 (
+    .Sign( SB ),
+    .A0( B0 ),
+    .A1( B1 ),
+    .A2( B2 ),
+    .A3( B3 ),
+    .B0( s0 ),
+    .B1( s1 ),
+    .B2( s2 ),
+    .B3( s3 )
+  );
+  CompA2 CompA2_i1 (
+    .Sign( SA ),
+    .A0( A0 ),
+    .A1( A1 ),
+    .A2( A2 ),
+    .A3( A3 ),
+    .B0( s4 ),
+    .B1( s5 ),
+    .B2( s6 ),
+    .B3( s7 )
+  );
+  assign s13 = (SA & SB);
+  Sumador4b Sumador4b_i2 (
+    .a0( s4 ),
+    .a1( s5 ),
+    .b0( s0 ),
+    .b1( s1 ),
+    .cin( 1'b0 ),
+    .a2( s6 ),
+    .b2( s2 ),
+    .a3( s7 ),
+    .b3( s3 ),
+    .s0( s8 ),
+    .s1( s9 ),
+    .s2( s10 ),
+    .s3( s11 ),
+    .cout( s12 )
+  );
+  Sumador Sumador_i3 (
+    .a( SA ),
+    .b( SB ),
+    .c( s12 ),
+    .Sum( s14 )
+  );
+  Mux_2x1 Mux_2x1_i4 (
+    .sel( s13 ),
+    .in_0( s14 ),
+    .in_1( s13 ),
+    .out( SC_temp )
+  );
+  CompA2 CompA2_i5 (
+    .Sign( SC_temp ),
+    .A0( s8 ),
+    .A1( s9 ),
+    .A2( s10 ),
+    .A3( s11 ),
+    .B0( C0 ),
+    .B1( C1 ),
+    .B2( C2 ),
+    .B3( C3 )
+  );
+  assign SC = SC_temp;
+endmodule

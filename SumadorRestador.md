@@ -40,15 +40,17 @@ Ahora, para realizar un sumador de 4 bits, se necesitan cuatro sumadores de un b
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/46d8b060-5226-4e7b-a2dd-698caa5de9df)
 
-### Restador
+### Componente restadora
 
-Para restar un número en lugar de sumarlo, primero hay que obtener su complemento a dos. Esto se logra invirtiendo todos los bits del número y sumándole 1 al resultado. Para el circuito restador de un número de 4 bits, se utilizan compuertas XOR para invertir los bits cuando sea necesario. Después de esta inversión, se agrega 1 al número, completando así la transformación al complemento a dos.
+Para restar un número en lugar de sumarlo, primero hay que obtener su complemento a dos. Esto se logra invirtiendo todos los bits del número y sumándole 1 al resultado. Para el circuito complemento a2 de un número de 4 bits, se utilizan compuertas XOR para invertir los bits cuando sea necesario. Después de esta inversión, se agrega 1 al número, completando así la transformación al complemento a2.
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/20060c8b-ab78-4f30-88a1-46c606aea8fc)
 
 ### Sumador-Restador
 
-Por último, para realizar el sumador-restador se utilizan 
+En la finalización del diseño del sumador-restador de 4 bits, se utiliza primero un circuitos complemento a2 para cada entrada, después de esto se le agrega un sumador de 4 bits y luego de esto, se coloca otro módulo de complemento a2 a la salida del sumador para facilitar la interpretación del resultado.
+
+Para determinar el signo del resultado, se suman los bits de signo de los números de entrada. Sin embargo, cuando ambos números son negativos, se emplea una compuerta lógica AND y un multiplexor para decidir si se utiliza la señal del semisumador de signo o la salida de la compuerta AND de signo para establecer el signo resultante. Esto se hace para gestionar correctamente los casos especiales donde ambos números son negativos.
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/832fc686-ef26-4284-985a-7fe21a67e29b)
 

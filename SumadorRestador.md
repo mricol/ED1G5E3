@@ -30,7 +30,7 @@ Primero se realizó un circuito base semisumador el cual es una parte inicial de
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/b6a34a46-627f-4d0c-bc48-0c8596dd9561)
 
-### Sumador
+### Sumadores
 
 Para realizar un sumador completo, se utilizan dos circuitos base semisumadores, uno tras otro, se crea un sumador de un solo bit. Este sumador de un bit incluye un acarreo de entrada adicional (Carry In), que representa el acarreo procedente de cálculos previos o la entrada directa de un bit en una suma más grande.
 
@@ -40,6 +40,10 @@ Ahora, para realizar un sumador de 4 bits, se necesitan cuatro sumadores de un b
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/46d8b060-5226-4e7b-a2dd-698caa5de9df)
 
-###
+### Restador
+
+Para restar un número en lugar de sumarlo, primero hay que obtener su complemento a dos. Esto se logra invirtiendo todos los bits del número y sumándole 1 al resultado. En la operación de resta de un número de 4 bits, se utiliza compuertas XOR para invertir los bits cuando sea necesario. Después de esta inversión, se agrega 1 al número, completando así la transformación al complemento a dos.
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/20060c8b-ab78-4f30-88a1-46c606aea8fc)
 
 ###

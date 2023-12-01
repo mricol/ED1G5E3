@@ -58,6 +58,9 @@ Y de esta manera se puede leer en la salida el signo corespontiente de la operac
 
 ## TestBench Sumador-Restador de 4 bits
 
+Después de convertir todos los archivos previos a Verilog
+
+```
 module SemiS (
   input a,
   input b,
@@ -67,7 +70,8 @@ module SemiS (
   assign Sum = (a ^ b);
   assign Cout = (a & b);
 endmodule
-
+```
+```
 module CompA2 (
   input Sign,
   input A0,
@@ -133,7 +137,8 @@ module Sumador (
   );
   assign Cout = (s0 | s1);
 endmodule
-
+```
+```
 module Sumador4b (
   input a0,
   input a1,
@@ -182,7 +187,8 @@ module Sumador4b (
     .Cout( cout )
   );
 endmodule
-
+```
+```
 module Mux_2x1
 (
     input [0:0] sel,
@@ -199,8 +205,8 @@ module Mux_2x1
         endcase
     end
 endmodule
-
-
+```
+```
 module SumRes (
   input A0,
   input A1,
@@ -298,3 +304,23 @@ module SumRes (
   );
   assign SC = SC_temp;
 endmodule
+```
+
+### 
+En este caso tenemos la suma de dos número binarios 9 y 4 respectivamente 
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/981f0eb9-8b51-4cfa-b1b3-dac317454b60)
+
+En este caso tenemos la suma de dos número binarios 9 y -4 respectivamente 
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/3b32bda6-5dc3-4985-9812-05b77a29a0d9)
+
+En este caso tenemos la suma de dos número binarios -9 y 4 respectivamente 
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/c30164b6-2d6d-4677-881b-b54824182ea1)
+
+
+En este caso tenemos la suma de dos número binarios -9 y -4 respectivamente 
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/a35a227b-3693-4419-8d7f-37ddf50dcbc4)
+

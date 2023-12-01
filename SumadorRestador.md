@@ -27,4 +27,19 @@ Un sumador-restador es un componente esencial en la aritmética binaria, capaz d
 
 ### Semisumador
 Primero se realizó un circuito base semisumador el cual es una parte inicial del sumador. Utiliza una puerta lógica XOR para calcular la suma binaria de dos bits y una puerta lógica AND para generar la señal de acarreo que indica si hay un acarreo de un bit al siguiente en la suma.
+
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/b6a34a46-627f-4d0c-bc48-0c8596dd9561)
+
+### Sumador
+
+Para realizar un sumador completo, se utilizan dos circuitos base semisumadores, uno tras otro, se crea un sumador de un solo bit. Este sumador de un bit incluye un acarreo de entrada adicional (Carry In), que representa el acarreo procedente de cálculos previos o la entrada directa de un bit en una suma más grande.
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/ad0b914d-3f59-4127-923c-c7ee7dfa8c82)
+
+Ahora, para realizar un sumador de 4 bits, se necesitan cuatro sumadores de un bit. Los sumadores de un bit se conectan en serie, de manera que el acarreo de salida (Carry Out) de un sumador de un bit se convierte en el acarreo de entrada (Carry In) del siguiente sumador de un bit. Esto permite que se procesen los bits y los acarreos a lo largo de los cuatro sumadores.
+
+![image](https://github.com/mricol/ED1G5E3/assets/82113257/46d8b060-5226-4e7b-a2dd-698caa5de9df)
+
+###
+
+###

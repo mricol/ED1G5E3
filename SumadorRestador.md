@@ -72,6 +72,32 @@ module SemiS (
 endmodule
 ```
 ```
+module Sumador (
+  input a,
+  input b,
+  input c,
+  output Sum,
+  output Cout
+);
+  wire s0;
+  wire s1;
+  wire s2;
+  SemiS SemiS_i0 (
+    .a( a ),
+    .b( b ),
+    .Sum( s2 ),
+    .Cout( s1 )
+  );
+  SemiS SemiS_i1 (
+    .a( s2 ),
+    .b( c ),
+    .Sum( Sum ),
+    .Cout( s0 )
+  );
+  assign Cout = (s0 | s1);
+endmodule
+```
+```
 module CompA2 (
   input Sign,
   input A0,
@@ -111,31 +137,6 @@ module CompA2 (
     .Cout( s5 )
   );
   assign B3 = (s5 ^ (A3 ^ Sign));
-endmodule
-
-module Sumador (
-  input a,
-  input b,
-  input c,
-  output Sum,
-  output Cout
-);
-  wire s0;
-  wire s1;
-  wire s2;
-  SemiS SemiS_i0 (
-    .a( a ),
-    .b( b ),
-    .Sum( s2 ),
-    .Cout( s1 )
-  );
-  SemiS SemiS_i1 (
-    .a( s2 ),
-    .b( c ),
-    .Sum( Sum ),
-    .Cout( s0 )
-  );
-  assign Cout = (s0 | s1);
 endmodule
 ```
 ```

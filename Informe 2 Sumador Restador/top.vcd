@@ -1,0 +1,492 @@
+$date
+	Tue Nov 28 15:31:36 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testbench $end
+$var wire 5 ! outs [4:0] $end
+$var reg 1 " a0 $end
+$var reg 1 # a1 $end
+$var reg 1 $ a2 $end
+$var reg 1 % a3 $end
+$var reg 1 & b0 $end
+$var reg 1 ' b1 $end
+$var reg 1 ( b2 $end
+$var reg 1 ) b3 $end
+$var reg 1 * sa $end
+$var reg 1 + sb $end
+$scope module dut $end
+$var wire 1 " A0 $end
+$var wire 1 # A1 $end
+$var wire 1 $ A2 $end
+$var wire 1 % A3 $end
+$var wire 1 & B0 $end
+$var wire 1 ' B1 $end
+$var wire 1 ( B2 $end
+$var wire 1 ) B3 $end
+$var wire 1 * SA $end
+$var wire 1 + SB $end
+$var wire 1 , SC $end
+$var wire 1 - s13 $end
+$var wire 1 . s9 $end
+$var wire 1 / s8 $end
+$var wire 1 0 s7 $end
+$var wire 1 1 s6 $end
+$var wire 1 2 s5 $end
+$var wire 1 3 s4 $end
+$var wire 1 4 s3 $end
+$var wire 1 5 s2 $end
+$var wire 1 6 s14 $end
+$var wire 1 7 s12 $end
+$var wire 1 8 s11 $end
+$var wire 1 9 s10 $end
+$var wire 1 : s1 $end
+$var wire 1 ; s0 $end
+$var wire 1 < SC_temp $end
+$var wire 1 = C3 $end
+$var wire 1 > C2 $end
+$var wire 1 ? C1 $end
+$var wire 1 @ C0 $end
+$scope module CompA2_i0 $end
+$var wire 1 & A0 $end
+$var wire 1 ' A1 $end
+$var wire 1 ( A2 $end
+$var wire 1 ) A3 $end
+$var wire 1 4 B3 $end
+$var wire 1 + Sign $end
+$var wire 1 A s0 $end
+$var wire 1 B s2 $end
+$var wire 1 C s4 $end
+$var wire 1 D s5 $end
+$var wire 1 E s3 $end
+$var wire 1 F s1 $end
+$var wire 1 5 B2 $end
+$var wire 1 : B1 $end
+$var wire 1 ; B0 $end
+$scope module SemiS_i0 $end
+$var wire 1 F Cout $end
+$var wire 1 ; Sum $end
+$var wire 1 + a $end
+$var wire 1 A b $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 E Cout $end
+$var wire 1 : Sum $end
+$var wire 1 F a $end
+$var wire 1 B b $end
+$upscope $end
+$scope module SemiS_i2 $end
+$var wire 1 D Cout $end
+$var wire 1 5 Sum $end
+$var wire 1 E a $end
+$var wire 1 C b $end
+$upscope $end
+$upscope $end
+$scope module CompA2_i1 $end
+$var wire 1 " A0 $end
+$var wire 1 # A1 $end
+$var wire 1 $ A2 $end
+$var wire 1 % A3 $end
+$var wire 1 0 B3 $end
+$var wire 1 * Sign $end
+$var wire 1 G s0 $end
+$var wire 1 H s2 $end
+$var wire 1 I s4 $end
+$var wire 1 J s5 $end
+$var wire 1 K s3 $end
+$var wire 1 L s1 $end
+$var wire 1 1 B2 $end
+$var wire 1 2 B1 $end
+$var wire 1 3 B0 $end
+$scope module SemiS_i0 $end
+$var wire 1 L Cout $end
+$var wire 1 3 Sum $end
+$var wire 1 * a $end
+$var wire 1 G b $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 K Cout $end
+$var wire 1 2 Sum $end
+$var wire 1 L a $end
+$var wire 1 H b $end
+$upscope $end
+$scope module SemiS_i2 $end
+$var wire 1 J Cout $end
+$var wire 1 1 Sum $end
+$var wire 1 K a $end
+$var wire 1 I b $end
+$upscope $end
+$upscope $end
+$scope module CompA2_i5 $end
+$var wire 1 = B3 $end
+$var wire 1 M s0 $end
+$var wire 1 N s2 $end
+$var wire 1 O s4 $end
+$var wire 1 P s5 $end
+$var wire 1 Q s3 $end
+$var wire 1 R s1 $end
+$var wire 1 < Sign $end
+$var wire 1 > B2 $end
+$var wire 1 ? B1 $end
+$var wire 1 @ B0 $end
+$var wire 1 8 A3 $end
+$var wire 1 9 A2 $end
+$var wire 1 . A1 $end
+$var wire 1 / A0 $end
+$scope module SemiS_i0 $end
+$var wire 1 R Cout $end
+$var wire 1 @ Sum $end
+$var wire 1 M b $end
+$var wire 1 < a $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 Q Cout $end
+$var wire 1 ? Sum $end
+$var wire 1 R a $end
+$var wire 1 N b $end
+$upscope $end
+$scope module SemiS_i2 $end
+$var wire 1 P Cout $end
+$var wire 1 > Sum $end
+$var wire 1 Q a $end
+$var wire 1 O b $end
+$upscope $end
+$upscope $end
+$scope module Mux_2x1_i4 $end
+$var wire 1 - in_1 $end
+$var wire 1 - sel $end
+$var wire 1 6 in_0 $end
+$var reg 1 < out $end
+$upscope $end
+$scope module Sumador4b_i2 $end
+$var wire 1 3 a0 $end
+$var wire 1 2 a1 $end
+$var wire 1 1 a2 $end
+$var wire 1 0 a3 $end
+$var wire 1 ; b0 $end
+$var wire 1 : b1 $end
+$var wire 1 5 b2 $end
+$var wire 1 4 b3 $end
+$var wire 1 S cin $end
+$var wire 1 T s6 $end
+$var wire 1 U s5 $end
+$var wire 1 V s4 $end
+$var wire 1 8 s3 $end
+$var wire 1 9 s2 $end
+$var wire 1 . s1 $end
+$var wire 1 / s0 $end
+$var wire 1 7 cout $end
+$scope module Sumador_i0 $end
+$var wire 1 V Cout $end
+$var wire 1 3 a $end
+$var wire 1 ; b $end
+$var wire 1 S c $end
+$var wire 1 W s2 $end
+$var wire 1 X s1 $end
+$var wire 1 Y s0 $end
+$var wire 1 / Sum $end
+$scope module SemiS_i0 $end
+$var wire 1 X Cout $end
+$var wire 1 W Sum $end
+$var wire 1 3 a $end
+$var wire 1 ; b $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 Y Cout $end
+$var wire 1 / Sum $end
+$var wire 1 W a $end
+$var wire 1 S b $end
+$upscope $end
+$upscope $end
+$scope module Sumador_i1 $end
+$var wire 1 U Cout $end
+$var wire 1 2 a $end
+$var wire 1 : b $end
+$var wire 1 V c $end
+$var wire 1 Z s2 $end
+$var wire 1 [ s1 $end
+$var wire 1 \ s0 $end
+$var wire 1 . Sum $end
+$scope module SemiS_i0 $end
+$var wire 1 [ Cout $end
+$var wire 1 Z Sum $end
+$var wire 1 2 a $end
+$var wire 1 : b $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 \ Cout $end
+$var wire 1 . Sum $end
+$var wire 1 Z a $end
+$var wire 1 V b $end
+$upscope $end
+$upscope $end
+$scope module Sumador_i2 $end
+$var wire 1 T Cout $end
+$var wire 1 1 a $end
+$var wire 1 5 b $end
+$var wire 1 U c $end
+$var wire 1 ] s2 $end
+$var wire 1 ^ s1 $end
+$var wire 1 _ s0 $end
+$var wire 1 9 Sum $end
+$scope module SemiS_i0 $end
+$var wire 1 ^ Cout $end
+$var wire 1 ] Sum $end
+$var wire 1 1 a $end
+$var wire 1 5 b $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 _ Cout $end
+$var wire 1 9 Sum $end
+$var wire 1 ] a $end
+$var wire 1 U b $end
+$upscope $end
+$upscope $end
+$scope module Sumador_i3 $end
+$var wire 1 7 Cout $end
+$var wire 1 0 a $end
+$var wire 1 4 b $end
+$var wire 1 T c $end
+$var wire 1 ` s2 $end
+$var wire 1 a s1 $end
+$var wire 1 b s0 $end
+$var wire 1 8 Sum $end
+$scope module SemiS_i0 $end
+$var wire 1 a Cout $end
+$var wire 1 ` Sum $end
+$var wire 1 0 a $end
+$var wire 1 4 b $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 b Cout $end
+$var wire 1 8 Sum $end
+$var wire 1 ` a $end
+$var wire 1 T b $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module Sumador_i3 $end
+$var wire 1 c Cout $end
+$var wire 1 * a $end
+$var wire 1 + b $end
+$var wire 1 7 c $end
+$var wire 1 d s2 $end
+$var wire 1 e s1 $end
+$var wire 1 f s0 $end
+$var wire 1 6 Sum $end
+$scope module SemiS_i0 $end
+$var wire 1 e Cout $end
+$var wire 1 d Sum $end
+$var wire 1 * a $end
+$var wire 1 + b $end
+$upscope $end
+$scope module SemiS_i1 $end
+$var wire 1 f Cout $end
+$var wire 1 6 Sum $end
+$var wire 1 d a $end
+$var wire 1 7 b $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0f
+0e
+0d
+0c
+0b
+0a
+1`
+0_
+0^
+1]
+0\
+0[
+0Z
+0Y
+0X
+1W
+0V
+0U
+0T
+0S
+0R
+0Q
+0P
+1O
+0N
+1M
+0L
+0K
+0J
+0I
+0H
+1G
+0F
+0E
+0D
+1C
+0B
+0A
+1@
+0?
+1>
+1=
+0<
+0;
+0:
+19
+18
+07
+06
+15
+04
+13
+02
+01
+10
+1/
+0.
+0-
+0,
+0+
+0*
+0)
+1(
+0'
+0&
+1%
+0$
+0#
+1"
+b1101 !
+$end
+#10
+0T
+1>
+0P
+1c
+0_
+1M
+1f
+0U
+0=
+0Q
+19
+08
+17
+0\
+0R
+1@
+1O
+0N
+1E
+0Z
+1]
+0`
+1a
+1/
+0V
+b101 !
+0,
+0<
+1F
+0:
+15
+14
+1W
+0X
+06
+1A
+1B
+0C
+0;
+1d
+1+
+#20
+0M
+09
+1T
+b10101 !
+1,
+1<
+0c
+1.
+0]
+1^
+18
+16
+0f
+1Z
+11
+0`
+07
+12
+0a
+04
+0E
+0J
+00
+0K
+0A
+0B
+1C
+0;
+0F
+0G
+1H
+1I
+13
+0L
+0+
+1*
+#30
+1>
+1=
+0?
+0_
+1O
+17
+b11101 !
+1@
+0R
+0U
+09
+1T
+08
+1b
+0M
+1E
+1Z
+0[
+0]
+1^
+1`
+1/
+0V
+1F
+0:
+15
+14
+1W
+0X
+16
+1c
+1-
+1A
+1B
+0C
+0;
+0d
+1e
+1+
+#40

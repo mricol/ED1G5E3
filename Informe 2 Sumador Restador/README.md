@@ -58,256 +58,34 @@ Y de esta manera se puede leer en la salida el signo corespontiente de la operac
 
 ## TestBench Sumador-Restador de 4 bits
 
-Después de convertir todos los archivos previos a Verilog
+Cada uno de estos circuitos base se declaran cuando exportamos a verilog el circuito final del Sumador-Restador de 4 bits, como se observa en el archivo SumRes.v
+
+Para hacer las pruebas creamos un nuevo archivo testbench de este archivo base SumRes_tb.v, en él definimos las variables que entran al SumRes, que son los 5 digitos de cada número de entrada, dónde el quinto dígito es el correspondiente al signo. 
+
+Hacemos la prueba con dos números: 4 y 9 y probamos las 4 combinaciones posibles: 4+9, 4-9, 9-4, -4-9, es decir, en cada caso solo cambian los signos:
 
 ```
-module SemiS (
-  input a,
-  input b,
-  output Sum,
-  output Cout
-);
-  assign Sum = (a ^ b);
-  assign Cout = (a & b);
-endmodule
+reg a0=1, a1=0, a2=0, a3=1, sa=0, b0=0, b1=0, b2=1, b3=0, sb=0;
+initial
+	begin
+		sa=0;
+		sb=0;
+		#10
+		sa=0;
+		sb=1;
+		#10;
+		sa=1;
+		sb=0;
+		#10;
+		sa=1;
+		sb=1;
+		#10;
+		$finish;
+		#10;
+	end
 ```
-```
-module Sumador (
-  input a,
-  input b,
-  input c,
-  output Sum,
-  output Cout
-);
-  wire s0;
-  wire s1;
-  wire s2;
-  SemiS SemiS_i0 (
-    .a( a ),
-    .b( b ),
-    .Sum( s2 ),
-    .Cout( s1 )
-  );
-  SemiS SemiS_i1 (
-    .a( s2 ),
-    .b( c ),
-    .Sum( Sum ),
-    .Cout( s0 )
-  );
-  assign Cout = (s0 | s1);
-endmodule
-```
-```
-module CompA2 (
-  input Sign,
-  input A0,
-  input A1,
-  input A2,
-  input A3,
-  output B0,
-  output B1,
-  output B2,
-  output B3
-);
-  wire s0;
-  wire s1;
-  wire s2;
-  wire s3;
-  wire s4;
-  wire s5;
-  assign s0 = (A0 ^ Sign);
-  assign s2 = (A1 ^ Sign);
-  assign s4 = (A2 ^ Sign);
-  SemiS SemiS_i0 (
-    .a( Sign ),
-    .b( s0 ),
-    .Sum( B0 ),
-    .Cout( s1 )
-  );
-  SemiS SemiS_i1 (
-    .a( s1 ),
-    .b( s2 ),
-    .Sum( B1 ),
-    .Cout( s3 )
-  );
-  SemiS SemiS_i2 (
-    .a( s3 ),
-    .b( s4 ),
-    .Sum( B2 ),
-    .Cout( s5 )
-  );
-  assign B3 = (s5 ^ (A3 ^ Sign));
-endmodule
-```
-```
-module Sumador4b (
-  input a0,
-  input a1,
-  input b0,
-  input b1,
-  input cin,
-  input a2,
-  input b2,
-  input a3,
-  input b3,
-  output s0,
-  output s1,
-  output s2,
-  output s3,
-  output cout
-);
-  wire s4;
-  wire s5;
-  wire s6;
-  Sumador Sumador_i0 (
-    .a( a0 ),
-    .b( b0 ),
-    .c( cin ),
-    .Sum( s0 ),
-    .Cout( s4 )
-  );
-  Sumador Sumador_i1 (
-    .a( a1 ),
-    .b( b1 ),
-    .c( s4 ),
-    .Sum( s1 ),
-    .Cout( s5 )
-  );
-  Sumador Sumador_i2 (
-    .a( a2 ),
-    .b( b2 ),
-    .c( s5 ),
-    .Sum( s2 ),
-    .Cout( s6 )
-  );
-  Sumador Sumador_i3 (
-    .a( a3 ),
-    .b( b3 ),
-    .c( s6 ),
-    .Sum( s3 ),
-    .Cout( cout )
-  );
-endmodule
-```
-```
-module Mux_2x1
-(
-    input [0:0] sel,
-    input in_0,
-    input in_1,
-    output reg out
-);
-    always @ (*) begin
-        case (sel)
-            1'h0: out = in_0;
-            1'h1: out = in_1;
-            default:
-                out = 'h0;
-        endcase
-    end
-endmodule
-```
-```
-module SumRes (
-  input A0,
-  input A1,
-  input A2,
-  input A3,
-  input SA,
-  input B0,
-  input B1,
-  input B2,
-  input B3,
-  input SB,
-  output C0,
-  output C1,
-  output C2,
-  output C3,
-  output SC
-);
-  wire s0;
-  wire s1;
-  wire s2;
-  wire s3;
-  wire s4;
-  wire s5;
-  wire s6;
-  wire s7;
-  wire s8;
-  wire s9;
-  wire s10;
-  wire s11;
-  wire s12;
-  wire SC_temp;
-  wire s13;
-  wire s14;
-  CompA2 CompA2_i0 (
-    .Sign( SB ),
-    .A0( B0 ),
-    .A1( B1 ),
-    .A2( B2 ),
-    .A3( B3 ),
-    .B0( s0 ),
-    .B1( s1 ),
-    .B2( s2 ),
-    .B3( s3 )
-  );
-  CompA2 CompA2_i1 (
-    .Sign( SA ),
-    .A0( A0 ),
-    .A1( A1 ),
-    .A2( A2 ),
-    .A3( A3 ),
-    .B0( s4 ),
-    .B1( s5 ),
-    .B2( s6 ),
-    .B3( s7 )
-  );
-  assign s13 = (SA & SB);
-  Sumador4b Sumador4b_i2 (
-    .a0( s4 ),
-    .a1( s5 ),
-    .b0( s0 ),
-    .b1( s1 ),
-    .cin( 1'b0 ),
-    .a2( s6 ),
-    .b2( s2 ),
-    .a3( s7 ),
-    .b3( s3 ),
-    .s0( s8 ),
-    .s1( s9 ),
-    .s2( s10 ),
-    .s3( s11 ),
-    .cout( s12 )
-  );
-  Sumador Sumador_i3 (
-    .a( SA ),
-    .b( SB ),
-    .c( s12 ),
-    .Sum( s14 )
-  );
-  Mux_2x1 Mux_2x1_i4 (
-    .sel( s13 ),
-    .in_0( s14 ),
-    .in_1( s13 ),
-    .out( SC_temp )
-  );
-  CompA2 CompA2_i5 (
-    .Sign( SC_temp ),
-    .A0( s8 ),
-    .A1( s9 ),
-    .A2( s10 ),
-    .A3( s11 ),
-    .B0( C0 ),
-    .B1( C1 ),
-    .B2( C2 ),
-    .B3( C3 )
-  );
-  assign SC = SC_temp;
-endmodule
-```
-
-### 
+ y obtenemos la gráfica con gtkwave, ayudándonos del curso verificamos cada combinación:
+ 
 En este caso tenemos la suma de dos número binarios 9 y 4 respectivamente 
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/981f0eb9-8b51-4cfa-b1b3-dac317454b60)
@@ -325,3 +103,5 @@ En este caso tenemos la suma de dos número binarios -9 y -4 respectivamente
 
 ![image](https://github.com/mricol/ED1G5E3/assets/82113257/a35a227b-3693-4419-8d7f-37ddf50dcbc4)
 
+### Aclaración
+Se contempló una suma cuyo resultado fuera de 4 signos también, por lo que el acarreo se descarta y por lo tanto solo se pueden realizar sumas hasta 15.
